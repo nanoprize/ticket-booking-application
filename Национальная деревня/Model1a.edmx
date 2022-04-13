@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище podvoryyeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Билеты">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="тип" Type="nvarchar" MaxLength="50" />
+          <Property Name="цена" Type="int" />
+        </EntityType>
+        <EntityType Name="Заказ">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_посетителя" Type="int" />
+          <Property Name="id_билета" Type="int" />
+          <Property Name="количество_билетов" Type="int" />
+          <Property Name="итоговая_стоимость" Type="int" />
+          <Property Name="id_excursion" Type="int" />
+        </EntityType>
+        <EntityType Name="Посетители">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ФИО" Type="nvarchar" MaxLength="50" />
+          <Property Name="номер" Type="nvarchar" MaxLength="11" />
+          <Property Name="почта" Type="nvarchar" MaxLength="30" />
+          <Property Name="login" Type="nvarchar" MaxLength="10" />
+          <Property Name="password" Type="nvarchar" MaxLength="11" />
+          <Property Name="фото" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Расписание">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="день и время" Type="nvarchar" MaxLength="30" />
+          <Property Name="название_события" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Заказ_Билеты">
+          <End Role="Билеты" Type="Self.Билеты" Multiplicity="0..1" />
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Билеты">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="id_билета" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заказ_Посетители">
+          <End Role="Посетители" Type="Self.Посетители" Multiplicity="0..1" />
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Посетители">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="Id_посетителя" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заказ_Экскурсии">
+          <End Role="Расписание" Type="Self.Расписание" Multiplicity="0..1" />
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Расписание">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="id_excursion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище podvoryyeModelContainer">
+          <EntitySet Name="Билеты" EntityType="Self.Билеты" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Заказ" EntityType="Self.Заказ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Посетители" EntityType="Self.Посетители" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Расписание" EntityType="Self.Расписание" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Заказ_Билеты" Association="Self.FK_Заказ_Билеты">
+            <End Role="Билеты" EntitySet="Билеты" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заказ_Посетители" Association="Self.FK_Заказ_Посетители">
+            <End Role="Посетители" EntitySet="Посетители" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заказ_Экскурсии" Association="Self.FK_Заказ_Экскурсии">
+            <End Role="Расписание" EntitySet="Расписание" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="podvoryyeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Билеты">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="тип" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="цена" Type="Int32" />
+          <NavigationProperty Name="Заказ" Relationship="Self.FK_Заказ_Билеты" FromRole="Билеты" ToRole="Заказ" />
+        </EntityType>
+        <EntityType Name="Заказ">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_посетителя" Type="Int32" />
+          <Property Name="id_билета" Type="Int32" />
+          <Property Name="количество_билетов" Type="Int32" />
+          <Property Name="итоговая_стоимость" Type="Int32" />
+          <Property Name="id_excursion" Type="Int32" />
+          <NavigationProperty Name="Билеты" Relationship="Self.FK_Заказ_Билеты" FromRole="Заказ" ToRole="Билеты" />
+          <NavigationProperty Name="Посетители" Relationship="Self.FK_Заказ_Посетители" FromRole="Заказ" ToRole="Посетители" />
+          <NavigationProperty Name="Расписание" Relationship="Self.FK_Заказ_Экскурсии" FromRole="Заказ" ToRole="Расписание" />
+        </EntityType>
+        <EntityType Name="Посетители">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ФИО" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="номер" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="почта" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="login" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="фото" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Заказ" Relationship="Self.FK_Заказ_Посетители" FromRole="Посетители" ToRole="Заказ" />
+        </EntityType>
+        <EntityType Name="Расписание">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="день_и_время" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="название_события" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Заказ" Relationship="Self.FK_Заказ_Экскурсии" FromRole="Расписание" ToRole="Заказ" />
+        </EntityType>
+        <Association Name="FK_Заказ_Билеты">
+          <End Role="Билеты" Type="Self.Билеты" Multiplicity="0..1" />
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Билеты">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="id_билета" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заказ_Посетители">
+          <End Role="Посетители" Type="Self.Посетители" Multiplicity="0..1" />
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Посетители">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="Id_посетителя" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заказ_Экскурсии">
+          <End Role="Расписание" Type="Self.Расписание" Multiplicity="0..1" />
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Расписание">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="id_excursion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Билеты" EntityType="Self.Билеты" />
+          <EntitySet Name="Заказ" EntityType="Self.Заказ" />
+          <EntitySet Name="Посетители" EntityType="Self.Посетители" />
+          <EntitySet Name="Расписание" EntityType="Self.Расписание" />
+          <AssociationSet Name="FK_Заказ_Билеты" Association="Self.FK_Заказ_Билеты">
+            <End Role="Билеты" EntitySet="Билеты" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заказ_Посетители" Association="Self.FK_Заказ_Посетители">
+            <End Role="Посетители" EntitySet="Посетители" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заказ_Экскурсии" Association="Self.FK_Заказ_Экскурсии">
+            <End Role="Расписание" EntitySet="Расписание" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище podvoryyeModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Билеты">
+            <EntityTypeMapping TypeName="podvoryyeModel.Билеты">
+              <MappingFragment StoreEntitySet="Билеты">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="тип" ColumnName="тип" />
+                <ScalarProperty Name="цена" ColumnName="цена" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Заказ">
+            <EntityTypeMapping TypeName="podvoryyeModel.Заказ">
+              <MappingFragment StoreEntitySet="Заказ">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_посетителя" ColumnName="Id_посетителя" />
+                <ScalarProperty Name="id_билета" ColumnName="id_билета" />
+                <ScalarProperty Name="количество_билетов" ColumnName="количество_билетов" />
+                <ScalarProperty Name="итоговая_стоимость" ColumnName="итоговая_стоимость" />
+                <ScalarProperty Name="id_excursion" ColumnName="id_excursion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Посетители">
+            <EntityTypeMapping TypeName="podvoryyeModel.Посетители">
+              <MappingFragment StoreEntitySet="Посетители">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+                <ScalarProperty Name="номер" ColumnName="номер" />
+                <ScalarProperty Name="почта" ColumnName="почта" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="фото" ColumnName="фото" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Расписание">
+            <EntityTypeMapping TypeName="podvoryyeModel.Расписание">
+              <MappingFragment StoreEntitySet="Расписание">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="день_и_время" ColumnName="день и время" />
+                <ScalarProperty Name="название_события" ColumnName="название_события" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,9 @@
+﻿<Application x:Class="Национальная_деревня.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Национальная_деревня"
+             StartupUri="excursions_admin.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="34c3c30315c34c5c840aaa213933977d" Name="Diagram1">
+        <EntityTypeShape EntityType="podvoryyeModel.Билеты" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="podvoryyeModel.Заказ" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="podvoryyeModel.Посетители" Width="1.5" PointX="0.875" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="podvoryyeModel.Расписание" Width="1.5" PointX="3.5" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="podvoryyeModel.FK_Заказ_Билеты" ManuallyRouted="false" />
+        <AssociationConnector Association="podvoryyeModel.FK_Заказ_Посетители" ManuallyRouted="false" />
+        <AssociationConnector Association="podvoryyeModel.FK_Заказ_Экскурсии" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

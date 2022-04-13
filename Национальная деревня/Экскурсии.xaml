@@ -1,0 +1,30 @@
+﻿<Window x:Class="Национальная_деревня.Экскурсии"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Национальная_деревня"
+        mc:Ignorable="d"
+        Title="Экскурсии" Height="450" Width="800" Icon="Снимок экрана 2022-04-11 195947.png">
+    <Grid Background="#FFE9EED0">
+        <DataGrid x:Name="list_raspisaniy" HorizontalAlignment="Left" Height="304" AutoGenerateColumns="False" Margin="64,63,0,0" VerticalAlignment="Top" Width="663" SelectionChanged="list_raspisaniy_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="День и время" Binding="{Binding день_и_время}" Width="*"></DataGridTextColumn>
+
+                <DataGridTextColumn Header="Мероприятие" Binding="{Binding название_события}" Width="*"></DataGridTextColumn>
+
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Width="130" Height="40" Content="Купить" Name="buyButton" Background="#FFE0E2F5" Click="buyButton_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="nazad_button" Content="Назад" HorizontalAlignment="Left" Margin="676,384,0,0" VerticalAlignment="Top" Width="104" Click="nazad_button_Click" Background="#FFB8C384" Height="25" FontFamily="Segoe UI Semibold" FontSize="16" BorderBrush="{x:Null}"/>
+        <TextBox x:Name="search" HorizontalAlignment="Left" Height="23" Margin="190,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="search_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="64,26,0,0" TextWrapping="Wrap" Text="Поиск по дате" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="652,10,0,0" TextWrapping="Wrap" Text="Экскурсии" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Black"/>
+    </Grid>
+</Window>

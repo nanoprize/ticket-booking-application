@@ -1,0 +1,15 @@
+﻿<Window x:Class="Национальная_деревня.adminMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Национальная_деревня"
+        mc:Ignorable="d"
+        Title="Главная" Height="392.01" Width="360.438">
+    <Grid Background="#FFE9EED0">
+        <Button x:Name="posetiteli_page" Content="Посетители" HorizontalAlignment="Left" Margin="121,63,0,0" VerticalAlignment="Top" Width="117" Click="posetiteli_page_Click" Background="#FFB8C384" Height="25" FontFamily="Segoe UI Semibold" FontSize="16" BorderBrush="{x:Null}"/>
+        <Button x:Name="order_page" Content="Заказы" HorizontalAlignment="Left" Margin="121,238,0,0" VerticalAlignment="Top" Width="117" Click="order_page_Click" Background="#FFB8C384" Height="25" FontFamily="Segoe UI Semibold" FontSize="16" BorderBrush="{x:Null}"/>
+        <Button x:Name="event_page" Content="Мероприятия" HorizontalAlignment="Left" Margin="121,151,0,0" VerticalAlignment="Top" Width="117" Click="event_page_Click" Background="#FFB8C384" Height="25" FontFamily="Segoe UI Semibold" FontSize="16" BorderBrush="{x:Null}"/>
+
+    </Grid>
+</Window>
