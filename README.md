@@ -25,4 +25,9 @@
 
 <img width="591" alt="image" src="https://github.com/nanoprize/ticket-booking-application/assets/54024983/93426c21-61d6-4453-b63e-e7031385ca87">
 
+Модель базы данных 
+
+<img width="613" alt="image" src="https://github.com/nanoprize/ticket-booking-application/assets/54024983/72ce1ab9-930c-4b65-b0b0-3d1744201134">
+
+
 
