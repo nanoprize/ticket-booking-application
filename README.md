@@ -3,10 +3,6 @@
 Авторизация
 
 
-<img width="219" alt="image" src="https://github.com/nanoprize/ticket-booking-application/assets/54024983/dc816d7d-2101-4c81-bd38-2443c1830aa9">
-
-
-
 <img width="673" alt="image" src="https://github.com/nanoprize/ticket-booking-application/assets/54024983/a0a3f28d-7bdf-449c-bd7e-c8eee348fcaf">
 
 
