@@ -10,7 +10,9 @@
 
 Окно для посетителя для заполнения информации о себе 
 
+
 <img width="219" alt="image" src="https://github.com/nanoprize/ticket-booking-application/assets/54024983/dc816d7d-2101-4c81-bd38-2443c1830aa9">
+
 
 
 <img width="387" alt="image" src="https://github.com/nanoprize/ticket-booking-application/assets/54024983/0c1d2b69-4364-4e19-b1b7-8c3adaba636e">
