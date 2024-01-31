@@ -1,6 +1,6 @@
 Приложение для заказа билетов на экскурсию в национальную деревню Саратова
 
-Авторизация
+Админские окна
 
 
 <img width="673" alt="image" src="https://github.com/nanoprize/ticket-booking-application/assets/54024983/a0a3f28d-7bdf-449c-bd7e-c8eee348fcaf">
